@@ -27,6 +27,7 @@
   --examples-subtitle-bg: rgba(47, 48, 58, 0.8);
   --portfolio-overlay-bg: rgba(33, 150, 243, 0.9);
   --backdrop-color: rgba(0, 0, 0, 0.2);
+  --close-btn-border-color: rgba(0, 0, 0, 0.1);
   --time-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -613,11 +614,14 @@ a {
   top: 0;
   left: 0;
 
+  visibility: visible;
+
   background-color: var(--backdrop-color);
 
   transform: scale(1);
 
-  transition: transform 250ms var(--time-function), opacity 250ms var(--time-function);
+  transition: transform 250ms var(--time-function), opacity 250ms var(--time-function),
+    visibility 250s var(--time-function);
 }
 
 .modal {
@@ -627,6 +631,7 @@ a {
 
   top: 50%;
   left: 50%;
+
   transform: translate(-50%, -50%);
 
   background-color: var(--light-color);
@@ -635,9 +640,9 @@ a {
 }
 
 .backdrop.is-hidden {
-  opacity: 0;
   pointer-events: none;
-
+  visibility: hidden;
+  opacity: 0;
   transform: scale(1.2);
 }
 
@@ -658,5 +663,5 @@ a {
   background-image: url(../images/close-btn.svg);
   background-repeat: no-repeat;
   background-position: center center;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--close-btn-border-color);
 }
