@@ -618,10 +618,7 @@ a {
 
   background-color: var(--backdrop-color);
 
-  transform: scale(1);
-
-  transition: transform 250ms var(--time-function), opacity 250ms var(--time-function),
-    visibility 250s var(--time-function);
+  transition: opacity 250ms var(--time-function), visibility 250s var(--time-function);
 }
 
 .modal {
@@ -632,18 +629,24 @@ a {
   top: 50%;
   left: 50%;
 
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1);
 
   background-color: var(--light-color);
   box-shadow: var(--team-card-shadow);
   border-radius: 4px;
+
+  transition: transform 250ms var(--time-function), opacity 250ms var(--time-function);
 }
 
 .backdrop.is-hidden {
   pointer-events: none;
   visibility: hidden;
   opacity: 0;
-  transform: scale(1.2);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 0;
 }
 
 .modal-wrapper {
